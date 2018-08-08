@@ -1,0 +1,31 @@
+# server
+server:
+  port: 8080
+
+spring:
+  # db
+  datasource:
+    # 新的mysql 连接驱动类为 com.mysql.cj.jdbc.Driver ，而 com.mysql.jdbc.Driver 逐渐废弃
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 6.0.x 以上mysql 连接驱动 必须配置 serverTimezone=Asia/Shanghai ，否则时区无法识别到处异常
+    # MySQL 5.5.45+, 5.6.26+ and 5.7.6+ 版本默认需要SSL 连接，否则需要配置 useSSL=false
+    # 容器部署配置
+#    url: jdbc:mysql://mysql:3308/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    # 本地连接配置
+    url: jdbc:mysql://localhost:3308/test?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 100
+      minimum-idle: 10
+      connection-timeout: 5000
+
+# swagger
+swagger:
+  enabled: true
+  title: 接口文档
+  description: 接口文档描述
+  contact:
+    name: 张晓峰
+    url: https://leonzhangxf.com
+    email: leonzhangxf@gmail.com
